@@ -22,6 +22,23 @@ function App() {
   });
   const lastReplyRef = useRef("");
   const endRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkDevice = () => setIsMobile(window.innerWidth < 768);
+    checkDevice();
+    window.addEventListener("resize", checkDevice);
+    return () => window.removeEventListener("resize", checkDevice);
+  }, []);
+
+  if (isMobile) {
+    return (
+      <div className="h-screen flex items-center justify-center bg-black text-white text-lg">
+        Device not supported. Please use a tablet or desktop.
+      </div>
+    );
+  }
+
 
   const handleSend = async (text) => {
     setLoading(true);
