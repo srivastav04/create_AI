@@ -13,7 +13,6 @@ class ErrorBoundary extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        // Reset error if children change (useful when reloading)
         if (this.state.hasError && prevProps.children !== this.props.children) {
             this.setState({ hasError: false, error: null });
         }

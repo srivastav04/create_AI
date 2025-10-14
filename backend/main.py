@@ -253,3 +253,7 @@ async def chat(msg: Message):
         return {"session_id": session_id, "response": parsed}
     else:
         return {"session_id": session_id, "raw": content}
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
