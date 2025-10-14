@@ -138,67 +138,9 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="flex h-screen">
-        <LeftPanel sourceCode={leftSourceCode} />
+    <div className="min-h-screen flex justify-center items-center bg-black text-white">
 
-        <div className="w-2/5 p-6 flex flex-col">
-          <div className="max-w-full w-full mx-auto flex flex-col h-full">
-            <ChatHeader sessionId={sessionId} resetSession={resetSession} />
-
-            <div className="flex-1 overflow-y-auto mb-4 px-2">
-              <div className="space-y-4 max-w-full">
-                {messages.length === 0 && (
-                  <div className="text-center text-gray-400 mt-8">
-                    No messages yet. Type something to start.
-                  </div>
-                )}
-
-                {messages.map((msg) => (
-                  <MessageItem key={msg.id} msg={msg} />
-                ))}
-                <div ref={endRef} />
-              </div>
-            </div>
-
-            {/* Input area */}
-            <div className="mt-2">
-              <div className="flex gap-3">
-                <textarea
-                  disabled={loading}
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  rows={2}
-                  maxLength={300}
-                  placeholder="Type your message..."
-                  className="flex-1 resize-none rounded-lg p-3 bg-gray-900 text-white border border-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                <button
-                  onClick={sendMessage}
-                  disabled={loading}
-                  aria-label={loading ? "Thinking" : "Send message"}
-                  aria-busy={loading}
-                  title={loading ? "Thinking..." : "Send"}
-                  className={`px-4 py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition-shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400
-    ${loading
-                      ? "bg-blue-400 cursor-not-allowed text-white shadow-none"
-                      : "bg-blue-600 hover:bg-blue-700 text-white shadow-md"}
-  `}
-                >
-                  {loading ? (
-                    <FaSpinner className="animate-spin" style={{ fontSize: 18 }} aria-hidden="true" />
-                  ) : (
-                    <MdSend style={{ fontSize: 18 }} aria-hidden="true" />
-                  )}
-
-                  <span>{loading ? "Thinking..." : "Send"}</span>
-                </button>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h1 className="text-2xl font-bold ">Soon To be deployed</h1>
     </div>
   );
 }
