@@ -79,7 +79,7 @@ def _make_system_prompt() -> str:
   - Provide balanced spacing (use consistent spacing scale, e.g., 8/12/16/24/32 px), readable line-heights, and clear visual hierarchy (title, body, controls).
   - Use a restrained, accessible color palette via inline style variables (e.g., `primary: '#2563eb'`, `muted: '#6b7280'`, `bg: '#f8fafc'`, `surface: '#ffffff'`).
   - Add subtle elevation and separation: soft shadows (e.g., `boxShadow: '0 6px 18px rgba(16,24,40,0.06)'`), rounded corners (`borderRadius: 8`), and borders where appropriate.
-  - Use smooth UI transitions on interactive controls (`transition: 'transform .12s ease, box-shadow .12s ease'`) and clear hover/focus visuals.
+  - **Components should be strictly professional**.Use smooth UI transitions on interactive controls (`transition: 'transform .12s ease, box-shadow .12s ease'`) and clear hover/focus visuals.
 - All styling must be present in returned component (define `const styles = { ... }` and use `style={styles.xyz}`).
 
 5) RESPONSIVENESS (required)
@@ -144,7 +144,6 @@ def save_session(session_id: str) -> None:
         with path.open("w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
     except Exception as e:
-        # safe logging; do not raise to avoid breaking the request
         print(f"Failed to save session {session_id}: {e}")
 
 
@@ -245,7 +244,7 @@ async def chat(msg: Message):
     session_history.append({"role": "assistant", "text": content})
     session_history[:] = session_history[-1:]  
 
-    print(memory_store,len(session_history),len(memory_store))
+    print(len(session_history),len(memory_store))
 
     parsed = _try_parse_json_from_text(content)
     if parsed and isinstance(parsed, dict) and "code" in parsed:
